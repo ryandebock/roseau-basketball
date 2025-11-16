@@ -1,0 +1,50 @@
+section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+
+#announcements {
+    background-color: black;
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+}
+
+#announcements .content {
+    background-color: whitesmoke;
+    color: black;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#news {
+    background-color: black;
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+}
+
+#news .content {
+    background-color: whitesmoke;
+    color: black;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+p {
+    font-family: 'Georgia', serif;
+    font-size: 2em;
+    color: #333;
+}
+
+blockquote {
+    font-family: 'Georgia', serif;
+    font-size: 1.2em;
+    color: #333;
+    border-left: 4px solid #ccc;
+    padding-left: 15px;
+    margin: 20px 0;
+}

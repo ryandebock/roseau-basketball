@@ -1,0 +1,45 @@
+.game-schedule {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    display: block;
+    width: fit-content;
+    justify-content: center;
+}
+
+th {
+    padding-bottom: 30px;
+    text-decoration: underline;
+    color: whitesmoke;
+    font-family: 'Aria', sans-serif;
+    font-size: 48px;
+    text-align: center;
+}
+
+.sched-text {
+    color: whitesmoke;
+    font-family: 'Aria', sans-serif;
+    font-size: 48px;
+    text-align: center;
+}
+
+.logo {
+    background-color: white;
+    border-radius: 50%;
+    width: 300px;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 150px;
+    }
+}
+
+img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
