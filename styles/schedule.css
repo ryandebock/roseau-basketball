@@ -34,7 +34,6 @@ th {
 .logo1 {
     background-color: white;
     border-radius: 50%;
-    border-color: green;
     width: 300px;
     height: auto;
     display: block;
@@ -51,6 +50,7 @@ img {
     margin-right: auto;
     display: block;
 }
+
 
 
 
