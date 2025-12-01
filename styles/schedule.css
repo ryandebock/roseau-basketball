@@ -31,14 +31,6 @@ th {
     display: block;
 }
 
-.logo1 {
-    background-color: white;
-    border-radius: 50%;
-    width: 300px;
-    height: auto;
-    display: block;
-}
-
 @media (max-width: 768px) {
     .logo {
         width: 150px;
@@ -50,6 +42,7 @@ img {
     margin-right: auto;
     display: block;
 }
+
 
 
 
