@@ -34,16 +34,6 @@ section {
     border-radius: 5px;
 }
 
-.news-card {
-    background color: white;
-}
-
-.news-card a {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-}
-
 .news-container {
     display: flex;
     border: 1px solid #ccc;
@@ -116,5 +106,6 @@ blockquote {
     padding-left: 15px;
     margin: 20px 0;
 }
+
 
 
