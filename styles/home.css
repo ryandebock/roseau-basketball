@@ -1,7 +1,9 @@
 .home-schedule-wrap {
-    max-width: 700px;
-    margin: 10px auto 50px;
-    padding: 0 20px;
+    flex: 1;
+    min-width: 0;
+    max-width: 500px;
+    margin: 0;
+    padding: 0;
 }
 
 .home-toggle-row {
@@ -99,7 +101,9 @@
 
 @media (max-width: 768px) {
     .home-schedule-wrap {
+        max-width: 100%;
         padding: 0 10px;
+        margin-bottom: 40px;
     }
 
     .week-table-card td {
