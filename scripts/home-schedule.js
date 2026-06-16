@@ -3,7 +3,8 @@ const SCHEDULE_FILE = 'data/schedule.csv';
 const PRACTICES_FILE = 'data/practices.csv';
 
 const MONTH_MAP = {
-    Nov: 10, Dec: 11, Jan: 0, Feb: 1, Mar: 2 // 0-indexed for JS Date
+    Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+    Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
 };
 
 // Logo map shared in spirit with schedule.js -- duplicated here so this
@@ -31,9 +32,13 @@ function parseCSV(text) {
     });
 }
 
-// Converts "Dec. 1st" -> a real Date object, inferring the year from
-// today's date using the same Nov 1 - Oct 31 season-year logic used
-// elsewhere on the site (see roster grad_year filtering).
+// Converts "Dec. 1st" -> a real Date object. The CSV stores no year, so
+// the year is inferred from a fixed season boundary: the season year
+// runs Nov 1 - Oct 31, and flips forward on Nov 1 each year (e.g. the
+// 2025-26 season covers Nov 1 2025 - Oct 31 2026; the 2026-27 season
+// starts Nov 1 2026). Nov/Dec dates belong to the season's start year;
+// every other month (Jan-Oct) belongs to the following calendar year.
+// This matches the same Nov 1 cutoff used for roster grad_year filtering.
 function parseGameDate(dateStr) {
     const match = dateStr.match(/^([A-Za-z]{3})\.?\s*(\d{1,2})/);
     if (!match) return null;
@@ -42,22 +47,16 @@ function parseGameDate(dateStr) {
     if (month === undefined || isNaN(day)) return null;
 
     const today = new Date();
-    const todayMonth = today.getMonth();
+    const todayMonth = today.getMonth(); // 0-indexed, Nov = 10
     const todayYear = today.getFullYear();
 
-    // Season runs Nov (10) through Mar (2). Nov/Dec belong to the
-    // calendar year the season started in; Jan/Feb/Mar belong to the
-    // following calendar year.
-    let seasonStartYear;
-    if (todayMonth >= 10) {
-        seasonStartYear = todayYear;
-    } else if (todayMonth <= 9) {
-        // Before November -- if we're early in the year (Jan-Oct),
-        // we're still inside the season that started last fall.
-        seasonStartYear = todayMonth <= 2 ? todayYear - 1 : todayYear;
-    }
+    // If today is Nov or Dec, the current season started this calendar
+    // year. Otherwise (Jan-Oct) the current season started last year.
+    const seasonStartYear = todayMonth >= 10 ? todayYear : todayYear - 1;
 
-    const gameYear = (month >= 10) ? seasonStartYear : seasonStartYear + 1;
+    // Nov/Dec dates belong to the season's start year; Jan-Oct dates
+    // belong to the year after.
+    const gameYear = month >= 10 ? seasonStartYear : seasonStartYear + 1;
     return new Date(gameYear, month, day);
 }
 
