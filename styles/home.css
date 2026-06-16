@@ -1,0 +1,104 @@
+.home-schedule-wrap {
+    max-width: 700px;
+    margin: 10px auto 50px;
+    padding: 0 20px;
+}
+
+.home-toggle-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.home-toggle-row .toggle-desc {
+    margin: 0;
+}
+
+.home-toggle-labels {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.05em;
+}
+
+#home-varsity-label,
+#home-jh-label {
+    color: whitesmoke;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.home-toggle-labels .active-label {
+    color: yellowgreen;
+    font-weight: bold;
+}
+
+.week-table-card {
+    background-color: #0d0d0d;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.week-table-card table {
+    width: 100%;
+    border-collapse: collapse;
+    color: whitesmoke;
+    font-family: 'Arial', sans-serif;
+}
+
+.week-table-card caption {
+    background-color: #111;
+    color: yellowgreen;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 14px 0;
+    text-align: center;
+    border-bottom: 2px solid yellowgreen;
+}
+
+.week-table-card tbody tr {
+    border-bottom: 1px solid #222;
+}
+
+.week-table-card tbody tr:last-child {
+    border-bottom: none;
+}
+
+.week-table-card td {
+    padding: 12px 8px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.week-table-card td.sched-text {
+    font-size: 0.95em;
+}
+
+.week-table-card td.logo img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0 auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .home-schedule-wrap {
+        padding: 0 10px;
+    }
+
+    .week-table-card td {
+        padding: 10px 4px;
+        font-size: 0.85em;
+    }
+
+    .week-table-card td.logo img {
+        width: 30px;
+        height: 30px;
+    }
+}
