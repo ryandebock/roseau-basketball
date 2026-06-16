@@ -87,6 +87,16 @@
     display: block;
 }
 
+.week-table-card tr.practice-row td {
+    color: rgb(150, 150, 150);
+    font-size: 0.9em;
+}
+
+.week-table-card td.practice-label {
+    text-align: center;
+    font-style: italic;
+}
+
 @media (max-width: 768px) {
     .home-schedule-wrap {
         padding: 0 10px;

@@ -1,5 +1,6 @@
 // ---- Config ----
 const SCHEDULE_FILE = 'data/schedule.csv';
+const PRACTICES_FILE = 'data/practices.csv';
 
 const MONTH_MAP = {
     Nov: 10, Dec: 11, Jan: 0, Feb: 1, Mar: 2 // 0-indexed for JS Date
@@ -78,52 +79,72 @@ function endOfWeek(date) {
     return d;
 }
 
-function renderTeamTable(games, team, tbodyId, captionId) {
+function renderTeamTable(items, team, tbodyId, captionId) {
     const tbody = document.getElementById(tbodyId);
     const caption = document.getElementById(captionId);
     tbody.innerHTML = '';
 
-    const teamGames = games.filter(g => g.team === team);
+    const teamItems = items.filter(i => i.team === team);
 
-    if (teamGames.length === 0) {
-        caption.textContent = team === 'varsity' ? 'No Varsity Games This Week' : 'No JH Games This Week';
+    if (teamItems.length === 0) {
+        caption.textContent = team === 'varsity' ? 'No Varsity Activities This Week' : 'No JH Activities This Week';
         return;
     }
 
     caption.textContent = team === 'varsity' ? 'Varsity This Week' : 'JH This Week';
 
-    teamGames.forEach(g => {
+    teamItems.forEach(item => {
         const tr = document.createElement('tr');
-        const homeAway = g.location === 'home' ? 'vs' : '@';
-        const leftLogo = g.location === 'home' ? ROSEAU_LOGO : logoFor(g.opponent).replace('assets/', '');
-        const rightLogo = g.location === 'home' ? logoFor(g.opponent).replace('assets/', '') : ROSEAU_LOGO;
 
-        tr.innerHTML = `
-            <td class="sched-text">${g.date}</td>
-            <td class="logo"><img src="assets/${leftLogo}" alt=""></td>
-            <td class="sched-text">${homeAway}</td>
-            <td class="logo"><img src="assets/${rightLogo}" alt=""></td>
-            <td class="sched-text">${g.time}</td>
-        `;
+        if (item.kind === 'practice') {
+            tr.classList.add('practice-row');
+            tr.innerHTML = `
+                <td class="sched-text">${item.date}</td>
+                <td class="practice-label" colspan="3">Practice &mdash; ${item.location}</td>
+                <td class="sched-text">${item.time}</td>
+            `;
+        } else {
+            const homeAway = item.location === 'home' ? 'vs' : '@';
+            const leftLogo = item.location === 'home' ? ROSEAU_LOGO : logoFor(item.opponent).replace('assets/', '');
+            const rightLogo = item.location === 'home' ? logoFor(item.opponent).replace('assets/', '') : ROSEAU_LOGO;
+
+            tr.innerHTML = `
+                <td class="sched-text">${item.date}</td>
+                <td class="logo"><img src="assets/${leftLogo}" alt=""></td>
+                <td class="sched-text">${homeAway}</td>
+                <td class="logo"><img src="assets/${rightLogo}" alt=""></td>
+                <td class="sched-text">${item.time}</td>
+            `;
+        }
         tbody.appendChild(tr);
     });
 }
 
 function loadHomeSchedule() {
-    fetch(SCHEDULE_FILE)
-        .then(res => {
+    Promise.all([
+        fetch(SCHEDULE_FILE).then(res => {
             if (!res.ok) throw new Error('Could not load schedule file');
             return res.text();
-        })
-        .then(text => {
-            const allGames = parseCSV(text);
+        }),
+        fetch(PRACTICES_FILE).then(res => {
+            // Practices file is optional-ish; if it's missing or empty,
+            // just treat it as no practices rather than failing the page.
+            if (!res.ok) return '';
+            return res.text();
+        }).catch(() => ''),
+    ])
+        .then(([scheduleText, practicesText]) => {
             const today = new Date();
             const weekStart = startOfWeek(today);
             const weekEnd = endOfWeek(today);
 
-            const thisWeek = allGames
-                .map(g => ({ ...g, _date: parseGameDate(g.date) }))
-                .filter(g => g._date && g._date >= weekStart && g._date <= weekEnd)
+            const games = parseCSV(scheduleText).map(g => ({ ...g, kind: 'game', _date: parseGameDate(g.date) }));
+            const practices = practicesText.trim()
+                ? parseCSV(practicesText).map(p => ({ ...p, kind: 'practice', _date: parseGameDate(p.date) }))
+                : [];
+
+            const thisWeek = [...games, ...practices]
+                .filter(item => item._date && item._date >= weekStart && item._date <= weekEnd)
                 .sort((a, b) => a._date - b._date);
 
             renderTeamTable(thisWeek, 'varsity', 'varsity-body', 'varsity-caption');
