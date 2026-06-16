@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, intial-scale=1.0">
         <title>Roseau Rams Basketball</title>
         <link rel="stylesheet" href="styles/styles.css">
-        <link rel="stylesheet" href="styles/schedule.css">
+        <link rel="stylesheet" href="styles/records.css">
     </header>
     <body>
         <h1>Roseau Rams Basketball</h1>
@@ -26,24 +26,34 @@
                 </ul>
             </nav>
         </div>
-        <div class="schedule-wrap">
-            <div class="schedule-toggle-row">
-                <p class="toggle-desc">Toggle Schedules</p>
-                <div class="schedule-toggle-labels">
-                    <span id="sched-varsity-label" class="active-label">Varsity</span>
+        <div class="records-wrap">
+            <div class="records-toggle-row">
+                <p class="toggle-desc">Toggle Records</p>
+                <div class="records-toggle-labels">
+                    <span id="records-individual-label" class="active-label">Individual</span>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="sched-toggle">
+                        <input type="checkbox" id="records-toggle">
                         <span class="slider"></span>
                     </label>
-                    <span id="sched-jh-label">JH</span>
+                    <span id="records-team-label">Team</span>
                 </div>
             </div>
-            <p class="record-line" id="record-line"></p>
-            <p id="schedule-status">Loading schedule&hellip;</p>
-            <div class="game-list" id="game-list"></div>
+            <div class="records-pills" id="records-pills"></div>
+            <p id="records-status">Loading records&hellip;</p>
+            <div class="records-table-scroll">
+                <table class="records-table" id="records-table" style="display:none;">
+                    <caption id="records-caption"></caption>
+                    <thead>
+                        <tr id="records-head-row"></tr>
+                    </thead>
+                    <tbody id="records-body"></tbody>
+                </table>
+            </div>
+            <p class="records-note" id="records-active-note" style="display:none;">* Active player, total still increasing</p>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
         <script src="scripts/script.js"></script>
-        <script src="scripts/schedule.js"></script>
+        <script src="scripts/records.js"></script>
     </body>
 
 </html>

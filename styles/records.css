@@ -1,0 +1,164 @@
+.records-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+.records-toggle-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 30px 0 25px;
+}
+
+.records-toggle-row .toggle-desc {
+    margin: 0;
+}
+
+.records-toggle-labels {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.1em;
+}
+
+#records-individual-label,
+#records-team-label {
+    color: whitesmoke;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.records-toggle-labels .active-label {
+    color: yellowgreen;
+    font-weight: bold;
+}
+
+.records-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.record-pill {
+    background-color: #111;
+    color: whitesmoke;
+    border: 1px solid #333;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.record-pill:hover {
+    border-color: yellowgreen;
+    color: yellowgreen;
+}
+
+.record-pill.active {
+    background-color: yellowgreen;
+    color: black;
+    border-color: yellowgreen;
+    font-weight: bold;
+}
+
+#records-status {
+    color: rgb(91, 90, 90);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.records-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #333;
+    border-radius: 6px;
+}
+
+table.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: whitesmoke;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.95em;
+    min-width: 560px;
+}
+
+table.records-table caption {
+    color: yellowgreen;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 14px 0;
+    text-align: center;
+    background-color: #111;
+    border-bottom: 2px solid yellowgreen;
+}
+
+table.records-table thead th {
+    background-color: #111;
+    color: whitesmoke;
+    font-size: 0.9em;
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+    white-space: nowrap;
+}
+
+table.records-table tbody td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+table.records-table tbody td.holder-cell {
+    text-align: left;
+    font-weight: bold;
+}
+
+table.records-table tbody tr:nth-child(odd) td {
+    background-color: #080808;
+}
+
+table.records-table tbody tr:first-child td {
+    color: yellowgreen;
+}
+
+table.records-table tbody tr:hover td {
+    background-color: #1a1a1a;
+}
+
+.records-note {
+    color: rgb(91, 90, 90);
+    font-family: 'Arial', sans-serif;
+    font-size: 0.85em;
+    text-align: center;
+    margin-top: 14px;
+}
+
+@media (max-width: 768px) {
+    .records-wrap {
+        padding: 0 10px 40px;
+    }
+
+    .record-pill {
+        font-size: 0.8em;
+        padding: 7px 14px;
+    }
+
+    table.records-table {
+        font-size: 0.85em;
+        min-width: 480px;
+    }
+
+    table.records-table thead th,
+    table.records-table tbody td {
+        padding: 8px 5px;
+    }
+}
