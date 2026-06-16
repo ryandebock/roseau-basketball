@@ -1,49 +1,172 @@
-.game-schedule {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    display: block;
-    width: fit-content;
+.schedule-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+.schedule-toggle-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 30px 0 10px;
+}
+
+.schedule-toggle-row .toggle-desc {
+    margin: 0;
+}
+
+.schedule-toggle-labels {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.1em;
+}
+
+#sched-varsity-label,
+#sched-jh-label {
+    color: whitesmoke;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.schedule-toggle-labels .active-label {
+    color: yellowgreen;
+    font-weight: bold;
+}
+
+.record-line {
+    text-align: center;
+    color: whitesmoke;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.3em;
+    margin: 4px 0 30px;
+}
+
+.record-line .record-number {
+    color: yellowgreen;
+    font-weight: bold;
+}
+
+#schedule-status {
+    color: rgb(91, 90, 90);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.game-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.game-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 90px;
+    align-items: center;
+    background-color: #0d0d0d;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: whitesmoke;
+    font-family: 'Arial', sans-serif;
+}
+
+.game-row.win {
+    border-left: 4px solid yellowgreen;
+}
+
+.game-row.loss {
+    border-left: 4px solid #b33;
+}
+
+.game-date {
+    font-size: 1em;
+    color: rgb(170, 170, 170);
+}
+
+.game-matchup {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 14px;
 }
 
-th {
-    padding-bottom: 30px;
-    text-decoration: underline;
-    color: whitesmoke;
-    font-family: 'Aria', sans-serif;
-    font-size: 48px;
-    text-align: center;
-}
-
-.sched-text {
-    color: whitesmoke;
-    font-family: 'Aria', sans-serif;
-    font-size: 48px;
-    text-align: center;
-}
-
-.logo {
-    background-color: white;
+.game-matchup img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
     border-radius: 50%;
-    width: 300px;
-    height: auto;
-    display: block;
+    background-color: white;
+    margin: 0;
+}
+
+.game-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 110px;
+}
+
+.game-loc {
+    font-size: 0.85em;
+    color: rgb(170, 170, 170);
+}
+
+.game-opponent {
+    font-size: 1.15em;
+    font-weight: bold;
+}
+
+.game-score {
+    font-size: 0.95em;
+}
+
+.game-score .result-w {
+    color: yellowgreen;
+    font-weight: bold;
+}
+
+.game-score .result-l {
+    color: #d65a5a;
+    font-weight: bold;
+}
+
+.game-time {
+    text-align: right;
+    font-size: 0.95em;
+    color: rgb(170, 170, 170);
 }
 
 @media (max-width: 768px) {
-    .logo {
-        width: 150px;
+    .schedule-wrap {
+        padding: 0 10px 40px;
+    }
+
+    .game-row {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 8px;
+        padding: 14px 10px;
+    }
+
+    .game-date {
+        order: 1;
+    }
+
+    .game-matchup {
+        order: 2;
+        gap: 10px;
+    }
+
+    .game-matchup img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .game-time {
+        order: 3;
+        text-align: center;
     }
 }
-
-img {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-
-
-
-
