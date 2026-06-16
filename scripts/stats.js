@@ -172,10 +172,10 @@ function render() {
         const cells = [
             { key: 'player', cls: 'player-cell' },
             { key: 'gp' }, { key: 'ppg' }, { key: 'rpg' }, { key: 'apg' },
-            { key: 'spg' }, { key: 'bpg' }, { key: 'topg' },
+            { key: 'spg' }, { key: 'bpg' },
             { key: 'fg_pct' }, { key: 'fg3_pct' }, { key: 'ft_pct' },
             { key: 'points' }, { key: 'reb' }, { key: 'ast' },
-            { key: 'stl' }, { key: 'blk' }, { key: 'to' }, { key: 'foul' },
+            { key: 'stl' }, { key: 'blk' }
         ];
         cells.forEach(c => {
             const td = document.createElement('td');
