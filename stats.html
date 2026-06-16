@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, intial-scale=1.0">
         <title>Roseau Rams Basketball</title>
         <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/stats.css">
     </header>
     <body>
         <h1>Roseau Rams Basketball</h1>
@@ -24,8 +25,52 @@
                 </ul>
             </nav>
         </div>
+        <div class="stats-wrap">
+            <div class="stats-toggle-row">
+                <p class="toggle-desc">Toggle Stats View</p>
+                <div class="stats-toggle-labels">
+                    <span id="stats-current-label" class="active-label">Current Season</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="stats-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span id="stats-career-label">Career</span>
+                </div>
+            </div>
+            <p id="stats-status">Loading stats&hellip;</p>
+            <div class="stats-table-scroll">
+                <table class="stats-table" id="stats-table" style="display:none;">
+                    <caption id="stats-caption"></caption>
+                    <thead>
+                        <tr>
+                            <th class="player-col" data-key="player" data-type="string">Player</th>
+                            <th data-key="gp" data-type="number">GP</th>
+                            <th data-key="ppg" data-type="number">PPG</th>
+                            <th data-key="rpg" data-type="number">RPG</th>
+                            <th data-key="apg" data-type="number">APG</th>
+                            <th data-key="spg" data-type="number">SPG</th>
+                            <th data-key="bpg" data-type="number">BPG</th>
+                            <th data-key="topg" data-type="number">TOPG</th>
+                            <th data-key="fg_pct" data-type="number">FG%</th>
+                            <th data-key="fg3_pct" data-type="number">3P%</th>
+                            <th data-key="ft_pct" data-type="number">FT%</th>
+                            <th data-key="points" data-type="number">PTS</th>
+                            <th data-key="reb" data-type="number">REB</th>
+                            <th data-key="ast" data-type="number">AST</th>
+                            <th data-key="stl" data-type="number">STL</th>
+                            <th data-key="blk" data-type="number">BLK</th>
+                            <th data-key="to" data-type="number">TO</th>
+                            <th data-key="foul" data-type="number">FOUL</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stats-body"></tbody>
+                </table>
+            </div>
+            <p class="stats-note">Tap a column header to sort. Scroll right to see all stats on smaller screens.</p>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
         <script src="scripts/script.js"></script>
+        <script src="scripts/stats.js"></script>
     </body>
 
 </html>
-
