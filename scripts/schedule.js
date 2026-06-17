@@ -1,5 +1,5 @@
 // ---- Config ----
-const SCHEDULE_FILE = 'data/schedule.csv';
+const SCHEDULE_FILE = '../data/schedule.csv';
 
 // Opponent name -> logo filename in /assets.
 // Add a new line here the first time you play a brand new opponent;
@@ -24,6 +24,7 @@ const LOGO_MAP = {
     "LOTW": "lotw.png",
     "Roseau": "roseau.png",
     "Grafton": "grafton.png",
+    "Greenway-NK": "greenway.png"
 };
 const ROSEAU_LOGO = "roseau.png";
 const FALLBACK_LOGO = "roseau.png"; // used if an opponent isn't in the map yet
@@ -72,7 +73,7 @@ function loadSchedule() {
 }
 
 function logoFor(opponent) {
-    return 'assets/' + (LOGO_MAP[opponent] || FALLBACK_LOGO);
+    return '../assets/' + (LOGO_MAP[opponent] || FALLBACK_LOGO);
 }
 
 function render() {
@@ -92,8 +93,8 @@ function render() {
         row.className = 'game-row' + (g.result === 'W' ? ' win' : g.result === 'L' ? ' loss' : '');
 
         const homeAway = g.location === 'home' ? 'vs' : '@';
-        const leftLogo = g.location === 'home' ? ROSEAU_LOGO : logoFor(g.opponent).replace('assets/', '');
-        const rightLogo = g.location === 'home' ? logoFor(g.opponent).replace('assets/', '') : ROSEAU_LOGO;
+        const leftLogo = g.location === 'home' ? ROSEAU_LOGO : logoFor(g.opponent).replace('../assets/', '');
+        const rightLogo = g.location === 'home' ? logoFor(g.opponent).replace('../assets/', '') : ROSEAU_LOGO;
 
         let scoreHtml = '';
         if (g.result && g.score) {
@@ -109,13 +110,13 @@ function render() {
         row.innerHTML = `
             <div class="game-date">${g.date}</div>
             <div class="game-matchup">
-                <img src="assets/${leftLogo}" alt="">
+                <img src="../assets/${leftLogo}" alt="">
                 <div class="game-meta">
                     <span class="game-loc">${homeAway}</span>
                     <span class="game-opponent">${g.opponent}</span>
                     <span class="game-score">${scoreHtml}</span>
                 </div>
-                <img src="assets/${rightLogo}" alt="">
+                <img src="../assets/${rightLogo}" alt="">
             </div>
             <div class="game-time">${g.time}</div>
         `;

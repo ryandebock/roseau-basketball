@@ -1,5 +1,5 @@
 // ---- Config ----
-const RECORDS_FILE = 'data/records.xlsx';
+const RECORDS_FILE = '../data/records.xlsx';
 const SHEET_NAME = 'Sheet1';
 
 const DEFAULT_INDIVIDUAL = '1000 Point Club';

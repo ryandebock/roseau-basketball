@@ -1,6 +1,6 @@
 // ---- Config ----
-const SCHEDULE_FILE = 'data/schedule.csv';
-const PRACTICES_FILE = 'data/practices.csv';
+const SCHEDULE_FILE = '../data/schedule.csv';
+const PRACTICES_FILE = '../data/practices.csv';
 
 const MONTH_MAP = {
     Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
@@ -16,7 +16,8 @@ const LOGO_MAP = {
     "Menagha": "menagha.png", "WDC": "wadena.png", "Clearbrook": "clearbrook.png",
     "GGG": "grygla.png", "BGMR": "badger.png", "WAO": "warren.png",
     "Crookston": "crookston.png", "Freeze": "freeze.png", "IFalls": "ifalls.png",
-    "RLC": "rlcc.png", "LOTW": "lotw.png", "Roseau": "roseau.png", "Grafton": "grafton.png",
+    "RLC": "rlcc.png", "LOTW": "lotw.png", "Roseau": "roseau.png", "Grafton": "grafton.png", 
+    "Greenway-NK": "greenway.png"
 };
 const ROSEAU_LOGO = "roseau.png";
 const FALLBACK_LOGO = "roseau.png";
@@ -61,7 +62,7 @@ function parseGameDate(dateStr) {
 }
 
 function logoFor(opponent) {
-    return 'assets/' + (LOGO_MAP[opponent] || FALLBACK_LOGO);
+    return '../assets/' + (LOGO_MAP[opponent] || FALLBACK_LOGO);
 }
 
 function startOfWeek(date) {
@@ -109,9 +110,9 @@ function renderTeamTable(items, team, tbodyId, captionId) {
 
             tr.innerHTML = `
                 <td class="sched-text">${item.date}</td>
-                <td class="logo"><img src="assets/${leftLogo}" alt=""></td>
+                <td class="logo"><img src="../assets/${leftLogo}" alt=""></td>
                 <td class="sched-text">${homeAway}</td>
-                <td class="logo"><img src="assets/${rightLogo}" alt=""></td>
+                <td class="logo"><img src="../assets/${rightLogo}" alt=""></td>
                 <td class="sched-text">${item.time}</td>
             `;
         }

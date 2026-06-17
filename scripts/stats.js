@@ -1,5 +1,5 @@
 // ---- Config ----
-const STATS_FILE = 'data/stats.xlsx';
+const STATS_FILE = '../data/stats.xlsx';
 const SHEET_NAME = 'Sheet1';
 
 // Season strings are formatted 'yyyy-yy' (e.g. "2025-26").
